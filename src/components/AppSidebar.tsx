@@ -35,7 +35,7 @@ const navigationItems = [
 ]
 
 export function AppSidebar() {
-  const { collapsed } = useSidebar()
+  const { state } = useSidebar()
   const location = useLocation()
   const currentPath = location.pathname
 
@@ -44,7 +44,7 @@ export function AppSidebar() {
     isActive ? "bg-primary text-primary-foreground font-medium" : "hover:bg-accent"
 
   return (
-    <Sidebar className={collapsed ? "w-14" : "w-64"} collapsible>
+    <Sidebar collapsible="icon">
       <SidebarTrigger className="m-2 self-end" />
       
       <SidebarContent>
@@ -53,7 +53,7 @@ export function AppSidebar() {
             <div className="w-8 h-8 football-gradient rounded-full flex items-center justify-center">
               <Trophy className="w-4 h-4 text-white" />
             </div>
-            {!collapsed && (
+            {state === "expanded" && (
               <div>
                 <h2 className="font-bold text-lg">Liga Manager</h2>
                 <p className="text-xs text-muted-foreground">Control Total</p>
@@ -71,7 +71,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <NavLink to={item.url} end className={getNavCls}>
                       <item.icon className="mr-3 h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
+                      {state === "expanded" && <span>{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
