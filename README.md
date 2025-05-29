@@ -1,73 +1,70 @@
-# Welcome to your Lovable project
 
-## Project info
+# Sistema de Gestión de Liga de Fútbol
 
-**URL**: https://lovable.dev/projects/adfc77e8-550f-4dbf-80f9-9b346358ab8f
+## Configuración Completa
 
-## How can I edit this code?
+### Frontend (React)
+```bash
+# Instalar dependencias
+npm install
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/adfc77e8-550f-4dbf-80f9-9b346358ab8f) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Ejecutar en desarrollo
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Backend (Express + MySQL)
+```bash
+# Ir al directorio del servidor
+cd server
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+# Instalar dependencias
+npm install
 
-**Use GitHub Codespaces**
+# Configurar base de datos MySQL
+# 1. Instalar MySQL en tu sistema
+# 2. Crear base de datos ejecutando: mysql -u root -p < database/schema.sql
+# 3. Configurar credenciales en server/.env
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Ejecutar servidor
+npm run dev
+```
 
-## What technologies are used for this project?
+### Configuración de MySQL
 
-This project is built with:
+1. **Instalar MySQL:**
+   - Windows: Descargar MySQL Installer
+   - macOS: `brew install mysql`
+   - Linux: `sudo apt-get install mysql-server`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. **Crear base de datos:**
+   ```bash
+   mysql -u root -p
+   source server/database/schema.sql
+   ```
 
-## How can I deploy this project?
+3. **Configurar credenciales:**
+   ```bash
+   cd server
+   cp .env.example .env
+   # Editar .env con tus credenciales de MySQL
+   ```
 
-Simply open [Lovable](https://lovable.dev/projects/adfc77e8-550f-4dbf-80f9-9b346358ab8f) and click on Share -> Publish.
+## Estructura del Proyecto
 
-## Can I connect a custom domain to my Lovable project?
+```
+├── src/                 # Frontend React
+├── server/             # Backend Express
+│   ├── config/         # Configuración de DB
+│   ├── routes/         # Rutas de API
+│   ├── database/       # Scripts SQL
+│   └── server.js       # Servidor principal
+└── README.md
+```
 
-Yes, you can!
+## URLs de desarrollo
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:3001
+- Health Check: http://localhost:3001/health
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+El proyecto ahora está completamente configurado para trabajar con MySQL local.
